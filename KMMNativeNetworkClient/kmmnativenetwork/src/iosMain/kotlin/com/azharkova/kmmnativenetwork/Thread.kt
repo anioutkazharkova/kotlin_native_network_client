@@ -13,14 +13,14 @@ internal fun <T> T.atomic(): AtomicReference<T>{
 }
 
 internal fun background(block: () -> Unit) {
-    val future = worker.execute(TransferMode.SAFE, { block.share() }) {
+    val future = worker.execute(TransferMode.SAFE, { block}) {
         it()
     }
     collectFutures.add(future)
 }
 
 internal fun background(block: () -> (Any?), callback: (Any?)->Unit) {
-    val future = worker.execute(TransferMode.SAFE, { block.share() }) {
+    val future = worker.execute(TransferMode.SAFE, { block }) {
         it()
     }
     future.consume {
@@ -33,7 +33,7 @@ internal fun background(block: () -> (Any?), callback: (Any?)->Unit) {
 
 
 internal fun main(block:()->Unit) {
-    block.share().apply {
+    block.apply {
         val freezedBlock = this
         dispatch_async(dispatch_get_main_queue()) {
             freezedBlock()

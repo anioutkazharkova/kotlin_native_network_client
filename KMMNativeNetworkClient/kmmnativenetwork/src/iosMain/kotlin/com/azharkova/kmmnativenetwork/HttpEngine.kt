@@ -13,7 +13,7 @@ class HttpEngine : ResponseListener {
         val responseReader = ResponseReader().apply { this.responseListener = this@HttpEngine }
         val urlSession =
             NSURLSession.sessionWithConfiguration(
-                NSURLSessionConfiguration.defaultSessionConfiguration, responseReader.share(),
+                NSURLSessionConfiguration.defaultSessionConfiguration, responseReader,
                 delegateQueue = NSOperationQueue.currentQueue()
             )
 

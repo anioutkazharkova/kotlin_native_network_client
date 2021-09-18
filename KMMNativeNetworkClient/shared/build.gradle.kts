@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    kotlin("plugin.serialization")
 }
 
 kotlin {
@@ -22,7 +23,12 @@ kotlin {
         }
     }
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                implementation(project(mapOf("path" to ":kmmnativenetwork")))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${findProperty("version.kotlinx.coroutines")}")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test-common"))
@@ -36,16 +42,27 @@ kotlin {
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting
+        val iosMain by getting {
+            dependencies {
+
+            }
+        }
         val iosTest by getting
+    }
+
+    kotlin.targets.withType(KotlinNativeTarget::class.java) {
+        binaries.all {
+            freeCompilerArgs += "-Xruntime-logs=gc=info"
+        }
     }
 }
 
 android {
     compileSdkVersion(30)
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+    sourceSets["main"].manifest.srcFile("src/jvmMain/AndroidManifest.xml")
     defaultConfig {
         minSdkVersion(21)
         targetSdkVersion(30)
     }
 }
+

@@ -2,36 +2,43 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
     kotlin("multiplatform")
-    kotlin("native.cocoapods")
-    id("com.android.library")
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url = uri("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/dev")
+    }
+    maven {
+        url = uri("https://maven.pkg.jetbrains.space/public/p/kotlinx-coroutines/maven")
+    }
 }
 
 version = "1.0"
 
 kotlin {
-    android()
-
-    val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
-        System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
-        System.getenv("NATIVE_ARCH")?.startsWith("arm") == true -> ::iosSimulatorArm64
-        else -> ::iosX64
+    jvm {
+        compilations.all {
+            kotlinOptions.jvmTarget = "1.8"
+        }
+        testRuns["test"].executionTask.configure {
+            useJUnit()
+        }
     }
 
-    iosTarget("ios") {}
-
-    cocoapods {
-        summary = "Some description for the Shared Module"
-        homepage = "Link to the Shared Module homepage"
-        ios.deploymentTarget = "14.1"
-        frameworkName = "kmmnativenetwork"
-        // set path to your ios project podfile, e.g. podfile = project.file("../iosApp/Podfile")
+    ios {
+        binaries {
+            framework {
+                baseName = "library"
+            }
+        }
     }
     
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1-new-mm-dev2")
             }
         }
         val commonTest by getting {
@@ -40,8 +47,8 @@ kotlin {
                 implementation(kotlin("test-annotations-common"))
             }
         }
-        val androidMain by getting
-        val androidTest by getting {
+        val jvmMain by getting
+        val jvmTest by getting {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
@@ -49,14 +56,5 @@ kotlin {
         }
         val iosMain by getting
         val iosTest by getting
-    }
-}
-
-android {
-    compileSdkVersion(30)
-    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
-    defaultConfig {
-        minSdkVersion(21)
-        targetSdkVersion(30)
     }
 }
