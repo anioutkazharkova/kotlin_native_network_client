@@ -18,7 +18,6 @@ kotlin {
             useJUnit()
         }
     }
-    val hostOs = System.getProperty("os.name")
 
     ios {
         binaries {
