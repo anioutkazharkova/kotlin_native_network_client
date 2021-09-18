@@ -1,7 +1,6 @@
 package com.azharkova.kmm_concurrency_sample
 
 import com.azharkova.kmm_concurrency_sample.deferred.HttpDefferedEngine
-import platform.Foundation.NSLog
 
 actual class HttpClient : IHttpClient {
     val httpEngine = HttpEngine()
