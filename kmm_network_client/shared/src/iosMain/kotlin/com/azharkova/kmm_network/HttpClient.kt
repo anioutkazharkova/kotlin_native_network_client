@@ -1,9 +1,6 @@
 package com.azharkova.kmm_network
 
-import com.azharkova.kmm_concurrency_sample.deferred.HttpDefferedEngine
-import com.azharkova.news.data.NewsList
-import com.azharkova.newsapp.service.ContentResponse
-import com.azharkova.newsapp.service.JsonDecoder
+import com.azharkova.kmm_network.deferred.HttpDefferedEngine
 import kotlinx.coroutines.withContext
 import platform.Foundation.NSLog
 

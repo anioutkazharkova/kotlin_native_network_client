@@ -1,6 +1,8 @@
 package com.azharkova.kmm_network.deferred
 
-import com.azharkova.kmm_concurrency_sample.*
+import com.azharkova.kmm_network.*
+import com.azharkova.kmm_network.atomic
+import com.azharkova.kmm_network.share
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.flow.*
 import platform.Foundation.*

@@ -1,6 +1,10 @@
 package com.azharkova.kmm_network.deferred
 
-import com.azharkova.kmm_concurrency_sample.*
+
+import com.azharkova.kmm_network.Request
+import com.azharkova.kmm_network.Response
+import com.azharkova.kmm_network.ioDispatcher
+import com.azharkova.kmm_network.share
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
