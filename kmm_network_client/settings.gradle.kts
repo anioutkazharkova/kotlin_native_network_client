@@ -7,5 +7,5 @@ pluginManagement {
 }
 
 rootProject.name = "KMM_Network_Client"
-include(":shared")
+include(":kn_network_client")
 includeBuild("convention-plugins")

@@ -6,7 +6,7 @@ plugins {
     id("convention.publication")
 }
 
-group = "io.github.anioutkazharkova.knn"
+group = "io.github.anioutkazharkova"
 version = "1.0.0"
 
 repositories {
@@ -28,7 +28,7 @@ kotlin {
     iosTarget("ios") {
         binaries {
             framework {
-                baseName = "shared"
+                baseName = "kn_network_client"
             }
         }
     }
