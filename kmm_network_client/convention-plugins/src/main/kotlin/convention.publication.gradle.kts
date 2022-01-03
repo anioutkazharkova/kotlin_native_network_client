@@ -57,7 +57,7 @@ publishing {
         }
      maven {
       name = "GitHubPackages"
-         setUrl("https://maven.pkg.github.com/anioutkazharkova/di-multiplatform-lib")
+         setUrl("https://maven.pkg.github.com/anioutkazharkova/kotlin_native_network_client")
       credentials {
         username = getExtraString("githubActor")
         password = getExtraString("githubToken")
@@ -75,7 +75,7 @@ publishing {
         pom {
             name.set("KMM Network client")
             description.set("KMM Network client Library")
-            url.set("https://github.com/anioutkazharkova/di-multiplatform-lib")
+            url.set("https://github.com/anioutkazharkova/kotlin_native_network_client")
 
             licenses {
                 license {
@@ -91,7 +91,7 @@ publishing {
                 }
             }
             scm {
-                url.set("https://github.com/anioutkazharkova/di-multiplatform-lib")
+                url.set("https://github.com/anioutkazharkova/kotlin_native_network_client")
             }
 
         }
