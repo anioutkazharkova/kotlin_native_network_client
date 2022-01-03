@@ -6,7 +6,7 @@ plugins {
     id("convention.publication")
 }
 
-group = "io.github.anioutkazharkova"
+group = "io.github.anioutkazharkova.knn"
 version = "1.0.0"
 
 repositories {
@@ -15,7 +15,9 @@ repositories {
 
 
 kotlin {
-    android()
+    android {
+        publishLibraryVariants("release", "debug")
+    }
 
     val iosTarget: (String, KotlinNativeTarget.() -> Unit) -> KotlinNativeTarget = when {
         System.getenv("SDK_NAME")?.startsWith("iphoneos") == true -> ::iosArm64
