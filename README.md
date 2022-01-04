@@ -1,5 +1,10 @@
 # Kotlin Native network client
-Network client written with native API 
+Network client written with native API.
+Small lightweight solution for KMM apps to work with network. Also shows how to provide advanced multithreading solution for Kotlin Multiplatform
+
+For iOS Httpclient with NSUrlSession mechanism with advanced multithreading. 
+
+Android - OkHttp client.
 
 ### Install with Maven
 
@@ -72,6 +77,8 @@ Or use your own mapper and work with Response data class.
  
 - [x] Native url session for iOS
  
+- [x] Advanced multithreading for Kotlin Native
+ 
 - [x] OkHttp for Android
   
 #### What will be supported (todo):
@@ -83,3 +90,16 @@ Or use your own mapper and work with Response data class.
 - [ ] Extended specification of iOS client mechanism
  
 - [ ] Extended request logic  
+ 
+ ### How works multithreading
+ 
+ This sample shows how to implement advanced Kotlin Native multithreading mechanism.
+What could be used:
+
+- background workers
+ 
+- main thread wrappers
+ 
+- isolated graphs
+ 
+- channels, flows, coroutines 
