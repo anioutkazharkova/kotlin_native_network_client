@@ -66,13 +66,20 @@ Or use your own mapper and work with Response data class.
 
 What is supported:
 
-[x]Specify methods of http request
-[x]Specify headers for request   
-[x]Native url session for iOS
-[x]OkHttp for Android
+- [x] Specify methods of http request
+ 
+- [x] Specify headers for request
+ 
+- [x] Native url session for iOS
+ 
+- [x] OkHttp for Android
   
 What will be supported (todo):
-[ ]Body posting
-[ ]Extended work with parameters
-[ ]Extended specification of iOS client mechanism
-[ ]Extended request logic  
+ 
+- [ ] Body posting
+ 
+- [ ] Extended work with parameters
+ 
+- [ ] Extended specification of iOS client mechanism
+ 
+- [ ] Extended request logic  
