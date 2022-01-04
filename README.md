@@ -64,7 +64,7 @@ Also you can use built-in JsonDecoder to decode all your data in specific Conten
 
 Or use your own mapper and work with Response data class.
 
-What is supported:
+#### What is supported:
 
 - [x] Specify methods of http request
  
@@ -74,7 +74,7 @@ What is supported:
  
 - [x] OkHttp for Android
   
-What will be supported (todo):
+#### What will be supported (todo):
  
 - [ ] Body posting
  
